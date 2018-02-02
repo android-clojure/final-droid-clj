@@ -11,8 +11,13 @@
   :javac-options ["-target" "1.6" "-source" "1.6" "-Xlint:-options"]
   :plugins [[lein-droid "0.4.6"]]
 
+  :repositories [["google" {:url "https://maven.google.com"}]
+                 ["jitpack" {:url "https://jitpack.io"}]]
+
   :dependencies [[org.clojure-android/clojure "1.7.0-r4"]
-                 [neko/neko "4.0.0-alpha5"]]
+                 [neko/neko "4.0.0-alpha5"]
+                 [com.android.support/appcompat-v7 "27.0.2"]
+                 [com.android.support/design "27.0.2"]]
   :profiles {:default [:dev]
 
              :dev
@@ -48,14 +53,14 @@
                          :proguard-execute true
                          :proguard-conf-path "build/proguard-minify.cfg"}}]}
 
-  :android {;; Specify the path to the Android SDK directory.
-            :sdk-path "/Users/ian/Library/Android/sdk"
+              :android {;; Specify the path to the Android SDK directory.
+                :sdk-path "/Users/ian/Library/Android/sdk"
 
-            ;; Increase this value if dexer fails with OutOfMemoryException.
-            :dex-opts ["-JXmx4096M" "--incremental"]
+                ;; Increase this value if dexer fails with OutOfMemoryException.
+                :dex-opts ["-JXmx4096M" "--incremental"]
 
-            :target-version "27"
-            :aot-exclude-ns ["clojure.parallel" "clojure.core.reducers"
-                             "cider.nrepl" "cider-nrepl.plugin"
-                             "cider.nrepl.middleware.util.java.parser"
-                             #"cljs-tooling\..+"]})
+                :target-version "27"
+                :aot-exclude-ns ["clojure.parallel" "clojure.core.reducers"
+                                 "cider.nrepl" "cider-nrepl.plugin"
+                                 "cider.nrepl.middleware.util.java.parser"
+                                 #"cljs-tooling\..+"]})

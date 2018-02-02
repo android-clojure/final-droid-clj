@@ -32,13 +32,5 @@
     (.superOnCreate this bundle)
     (neko.debug/keep-screen-on this)
     (on-ui
-      (set-content-view! (*a)
-        [:linear-layout {:orientation :vertical
-                         :layout-width :fill
-                         :layout-height :wrap}
-         [:edit-text {:id ::user-input
-                      :hint "Type text here"
-                      :layout-width :fill}]
-         [:button {:text R$string/touch_me ;; We use resource here, but could
-                                           ;; have used a plain string too.
-                   :on-click (fn [_] (notify-from-edit (*a)))}]]))))
+      (set-content-view! (*a) R$layout/activity_main)
+      (.setText (res/get-string R$string/app_name) R$id/activity_title ))))
